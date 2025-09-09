@@ -1,0 +1,12 @@
+{
+  "dataApiHostName": "laszlos-test-apic.data.westeurope.azure-apicenter.ms/workspaces/default",
+  "title": "API portal",
+  "authentication": {
+    "clientId": "59adfd71-01c9-4b41-99d1-127170ecddcf",
+    "tenantId": "b41b72d0-4e9f-4c26-8a69-f949f367c91d",
+    "scopes": [
+      "https://azure-apicenter.net/user_impersonation"
+    ],
+    "authority": "https://login.microsoftonline.com/"
+  }
+}
