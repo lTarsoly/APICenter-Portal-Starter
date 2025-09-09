@@ -60,6 +60,7 @@ const ApiCard: FC<{ api: Api }> = ({ api }) => {
     const dataApiEndpoint = useLocalStorage(LocalStorageKey.dataApiEndpoint).get()?.split('/')[0];
     const dataApiClientId = useLocalStorage(LocalStorageKey.dataApiClientId).get();
     const dataApiTenantId = useLocalStorage(LocalStorageKey.dataApiTenantId).get();
+    const defaultImage = "https://avatars.githubusercontent.com/u/7658037?s=48&v=4"; 
     return (
         <Tooltip
             content={
@@ -75,13 +76,26 @@ const ApiCard: FC<{ api: Api }> = ({ api }) => {
         >
             <div className={css.apiCard} onClick={() => navigate("detail/" + api.name + window.location.search)}>
                 <div className={css.content}>
-                    {!!api.kind && (
-                        <div className={css.tags}>
-                            <span>API</span>
-                            <span>{api.kind}</span>
-                        </div>
-                    )}
-                    <h4>{api.title}</h4>
+                    <div className={css.headerSection}>
+                        {!!api.kind && (
+                            <>
+                            <img
+                                className={css.apiIcon}
+                                src={typeof api.customProperties?.logourl === "string" && api.customProperties.logourl ? api.customProperties.logourl : defaultImage}
+                                alt={api.title + " logo"}
+                            />
+                            <div className={css.contentRight}>
+                                <div className={css.tags}>
+                                    <span>API</span>
+                                    <span>{api.kind}</span>
+                                </div>
+                                <div className={css.titleRow}>
+                                    <h4>{api.title}</h4>
+                                </div>
+                            </div>
+                            </>
+                        )}
+                    </div>
                     <p className={css.description}>{api.description}</p>
                 </div>
 
